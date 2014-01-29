@@ -6,8 +6,7 @@ var HueApi = require("node-hue-api").HueApi;
     ClientId = '28554D220500009C',
     Packet = Fog.Packet;
 
-//var client = new Fog.Client({'endpoint':'ws://thefog.herokuapp.com/'});
-var client = new Fog.Client({'endpoint':'ws://localhost:3000/'});
+var client = new Fog.Client({'endpoint':'ws://thefog.herokuapp.com/'});
 var chili = new Client({address:'arduino1.local'});
 
 function updateClientId(callback){
