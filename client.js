@@ -20,8 +20,13 @@ function updateClientId(callback){
 updateClientId();
 
 client.on('error', function(data) {
-  console.log('error');
-  console.log(data);
+  console.log('error',data);
+  process.exit(1);
+});
+
+client.on('close', function() {
+  console.log('disconnected');
+  process.exit(1);
 });
 
 client.open(function() {
