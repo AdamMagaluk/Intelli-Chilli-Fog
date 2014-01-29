@@ -67,25 +67,7 @@ client.on('state', function(p) {
       p2.setClientId(ClientId);
       return client.respondTo(p, p2);
     }
-
-    state.cookTimeRange  = [0,(24*60)];
-    state.cookTempRange  = ['warm','low','medium','high'];
-
-    if(state.cooking === 0)
-      state.cooking = false;
-    else
-      state.cooking = true;
-
-    if(state.heaterOn === 0)
-      state.heaterOn = false;
-    else
-      state.heaterOn = true;
-
-    if(state.lidState === 0)
-      state.lidState = 'closed';
-    else
-      state.lidState = 'opened';
-
+    
     var p2 = new Packet({'action':'state',data : state});
     p2.setClientId(ClientId);
     client.respondTo(p, p2);
