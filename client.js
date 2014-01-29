@@ -76,7 +76,7 @@ client.on('state', function(p) {
 
 
 client.on('time', function(p) {
-  cilli.setCookTime(p.message.data.time,function(err){
+  chili.setCookTime(p.message.data.time,function(err){
     if(err){
       var p2 = new Packet({'action':'time',data : { error : err.message} });  
       p2.setClientId(ClientId);
@@ -90,7 +90,7 @@ client.on('time', function(p) {
 });
 
 client.on('temp', function(p) {
-  cilli.setCookTemp(p.message.data.temp,function(err){
+  chili.setCookTemp(p.message.data.temp,function(err){
     if(err){
       var p2 = new Packet({'action':'temp',data : { error : err.message} });  
       p2.setClientId(ClientId);
@@ -104,7 +104,7 @@ client.on('temp', function(p) {
 });
 
 client.on('start', function(p) {
-  cilli.startCook(function(err){
+  chili.startCook(function(err){
     if(err){
       var p2 = new Packet({'action':'start',data : { error : err.message} });  
       p2.setClientId(ClientId);
@@ -118,7 +118,7 @@ client.on('start', function(p) {
 });
 
 client.on('stop', function(p) {
-  cilli.stopCook(function(err){
+  chili.stopCook(function(err){
     if(err){
       var p2 = new Packet({'action':'stop',data : { error : err.message} });  
       p2.setClientId(ClientId);
@@ -133,7 +133,7 @@ client.on('stop', function(p) {
 
 
 client.on('reset', function(p) {
-  cilli.resetDevice(function(err){
+  chili.resetDevice(function(err){
     if(err){
       var p2 = new Packet({'action':'reset',data : { error : err.message} });  
       p2.setClientId(ClientId);
