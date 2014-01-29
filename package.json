@@ -1,6 +1,6 @@
 {
   "name": "intelli-chilli-fog",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Intelli-chili fog server",
   "main": "client.js",
   "scripts": {
@@ -11,6 +11,7 @@
   "dependencies": {
     "intelli-chilli-client": "~0.0.6",
     "async": "~0.2.9",
-    "node-hue-api": "~0.2.2"
+    "node-hue-api": "~0.2.2",
+    "thefog": "0.0.7"
   }
 }
