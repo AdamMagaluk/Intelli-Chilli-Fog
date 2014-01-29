@@ -6,8 +6,11 @@ var HueApi = require("node-hue-api").HueApi;
     ClientId = '28554D220500009C',
     Packet = Fog.Packet;
 
-var client = new Fog.Client({'endpoint':'ws://thefog.herokuapp.com/'});
-var chili = new Client({address:'arduino1.local'});
+var WS_SERVER = process.env.WS_SERVER || 'ws://thefog.herokuapp.com/';
+var ARDUINO = process.env.ARDUINO || 'arduino1.local';
+
+var client = new Fog.Client({'endpoint': WS_SERVER });
+var chili = new Client({address:ARDUINO});
 
 function updateClientId(callback){
   if(typeof callback === 'function')
@@ -66,7 +69,23 @@ client.on('state', function(p) {
     }
 
     state.cookTimeRange  = [0,(24*60)];
-    state.cookTempRange  = [20,90];
+    state.cookTempRange  = ['warm','low','medium','high'];
+
+    if(state.cooking === 0)
+      state.cooking = false;
+    else
+      state.cooking = true;
+
+    if(state.heaterOn === 0)
+      state.heaterOn = false;
+    else
+      state.heaterOn = true;
+
+    if(state.lidState === 0)
+      state.lidState = 'closed';
+    else
+      state.lidState = 'opened';
+
     var p2 = new Packet({'action':'state',data : state});
     p2.setClientId(ClientId);
     client.respondTo(p, p2);
