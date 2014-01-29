@@ -67,7 +67,7 @@ client.on('state', function(p) {
       p2.setClientId(ClientId);
       return client.respondTo(p, p2);
     }
-    
+
     var p2 = new Packet({'action':'state',data : state});
     p2.setClientId(ClientId);
     client.respondTo(p, p2);
@@ -76,7 +76,7 @@ client.on('state', function(p) {
 
 
 client.on('time', function(p) {
-  cillis.setCookTime(p.message.data.time,function(err){
+  cilli.setCookTime(p.message.data.time,function(err){
     if(err){
       var p2 = new Packet({'action':'time',data : { error : err.message} });  
       p2.setClientId(ClientId);
@@ -90,7 +90,7 @@ client.on('time', function(p) {
 });
 
 client.on('temp', function(p) {
-  cillis.setCookTemp(p.message.data.temp,function(err){
+  cilli.setCookTemp(p.message.data.temp,function(err){
     if(err){
       var p2 = new Packet({'action':'temp',data : { error : err.message} });  
       p2.setClientId(ClientId);
@@ -104,7 +104,7 @@ client.on('temp', function(p) {
 });
 
 client.on('start', function(p) {
-  cillis.startCook(function(err){
+  cilli.startCook(function(err){
     if(err){
       var p2 = new Packet({'action':'start',data : { error : err.message} });  
       p2.setClientId(ClientId);
@@ -118,7 +118,7 @@ client.on('start', function(p) {
 });
 
 client.on('stop', function(p) {
-  cillis.stopCook(function(err){
+  cilli.stopCook(function(err){
     if(err){
       var p2 = new Packet({'action':'stop',data : { error : err.message} });  
       p2.setClientId(ClientId);
@@ -133,7 +133,7 @@ client.on('stop', function(p) {
 
 
 client.on('reset', function(p) {
-  cillis.resetDevice(function(err){
+  cilli.resetDevice(function(err){
     if(err){
       var p2 = new Packet({'action':'reset',data : { error : err.message} });  
       p2.setClientId(ClientId);
@@ -208,6 +208,7 @@ udpserver.on('lidclosed',function(msg,rinfo){
     if(err)
       console.error(err);
   });
+
   var p = new Packet({'action':'lidclosed',data : { host : rinfo.address }});
   p.setClientId(ClientId);
   client.send(p);
